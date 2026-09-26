@@ -1,0 +1,76 @@
+.equipment-page {
+  width: 100%;
+  flex: 1;
+  background: var(--color-bg);
+}
+
+.products {
+  padding: 60px 8% 100px;
+}
+
+.products-header {
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.products-header h2 {
+  font-family: var(--font-display);
+  font-size: 44px;
+  color: var(--color-paper);
+}
+
+.products-header p {
+  margin-top: 8px;
+  color: var(--color-steel);
+  font-size: 16px;
+}
+
+.category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.tab {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-steel);
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.tab:hover {
+  border-color: var(--color-safety);
+  color: var(--color-safety);
+}
+
+.tab.active {
+  background: var(--color-safety);
+  border-color: var(--color-safety);
+  color: var(--color-ink);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 48px 32px;
+}
+
+@media (max-width: 1024px) {
+  .products {
+    padding: 60px 6%;
+  }
+
+  .products-header {
+    text-align: center;
+  }
+
+  .category-tabs {
+    justify-content: center;
+  }
+}
