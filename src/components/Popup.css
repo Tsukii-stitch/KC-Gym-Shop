@@ -1,0 +1,112 @@
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 14, 12, 0.85);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 110;
+}
+
+.welcome-modal {
+  background: var(--color-bg-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  width: 380px;
+  max-width: 90%;
+  text-align: center;
+  color: var(--color-paper);
+  animation: welcomePop 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes welcomePop {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.welcome-badge {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.welcome-modal h2 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.welcome-modal p {
+  color: var(--color-steel);
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+.voucher-card {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--color-bg),
+    var(--color-bg) 10px,
+    var(--color-bg-soft) 10px,
+    var(--color-bg-soft) 20px
+  );
+  border: 2px dashed var(--color-safety);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+
+.voucher-clickable {
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.voucher-clickable:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: var(--color-rust);
+}
+
+.voucher-label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--color-steel);
+}
+
+.voucher-amount {
+  font-family: var(--font-display);
+  font-size: 40px;
+  color: var(--color-safety);
+}
+
+.voucher-note {
+  font-size: 13px;
+  color: var(--color-steel);
+}
+
+.welcome-close {
+  width: 100%;
+  padding: 14px;
+  border-radius: 999px;
+  border: none;
+  background: var(--color-rust);
+  color: var(--color-paper);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.welcome-close:hover {
+  transform: translateY(-2px);
+}

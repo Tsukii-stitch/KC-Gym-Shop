@@ -18,23 +18,25 @@ function ProductPage() {
   const handleBack = (e) => {
     e.preventDefault();
     setIsExiting(true);
-    setTimeout(() => navigate("/"), 300);
+    setTimeout(() => navigate("/equipment"), 300);
   };
 
   if (!product) {
     return (
       <div className="product-page">
         <p>Product not found.</p>
-        <a href="/" onClick={handleBack}>Back to Home</a>
+        <a href="/equipment" onClick={handleBack}>Back to Equipment</a>
       </div>
     );
   }
+
+  const inStock = product.stock > 0;
 
   return (
     <div className={`product-page ${isExiting ? "page-exit" : ""}`}>
       {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
 
-      <a href="/" className="back-link" onClick={handleBack}>
+      <a href="/equipment" className="back-link" onClick={handleBack}>
         <span className="back-arrow">←</span>
         <span className="back-text">Back to shop</span>
       </a>
@@ -47,12 +49,19 @@ function ProductPage() {
 
       <div className={!user ? "product-content blurred" : "product-content"}>
         <div className="product-main">
-          <div className="product-frame">
-            <img src={product.image} alt={product.name} />
+          <div className="product-frame-wrap">
+            <div className="product-frame">
+              <img src={product.image} alt={product.name} />
+            </div>
           </div>
 
           <div className="product-info">
             <h1>{product.name}</h1>
+
+            <span className={inStock ? "stock-badge in-stock" : "stock-badge pre-order"}>
+              {inStock ? `${product.stock} on hand` : "Pre-order"}
+            </span>
+
             <p className="product-description">{product.longDescription}</p>
 
             <ul className="product-specs">
@@ -73,7 +82,17 @@ function ProductPage() {
               </div>
             </div>
 
-            <Button variant="primary">Add to Cart</Button>
+            <div className="product-actions">
+              <Button variant="primary">
+                {inStock ? "Add to Cart" : "Pre-order Now"}
+              </Button>
+
+              {inStock && (
+                <Button variant="buy">
+                  Buy Now
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </div>

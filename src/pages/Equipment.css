@@ -2,21 +2,75 @@
   width: 100%;
   flex: 1;
   background: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.equipment-page::before,
+.equipment-page::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(200px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.equipment-page::before {
+  width: 550px;
+  height: 550px;
+  background: var(--color-rust);
+  opacity: 0.14;
+  top: -120px;
+  right: -180px;
+}
+
+.equipment-page::after {
+  width: 500px;
+  height: 500px;
+  background: var(--color-safety);
+  opacity: 0.09;
+  bottom: 200px;
+  left: -200px;
+}
+
+.equipment-page {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
 .products {
   padding: 60px 8% 100px;
+  position: relative;
+  z-index: 1;
 }
 
 .products-header {
   text-align: left;
   margin-bottom: 40px;
+  position: relative;
 }
 
 .products-header h2 {
   font-family: var(--font-display);
   font-size: 44px;
   color: var(--color-paper);
+  position: relative;
+  z-index: 1;
+}
+
+.products-header::before {
+  content: "🏋";
+  position: absolute;
+  top: -40px;
+  right: 0;
+  font-size: 160px;
+  opacity: 0.04;
+  line-height: 1;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .products-header p {
@@ -68,6 +122,10 @@
 
   .products-header {
     text-align: center;
+  }
+
+  .products-header::before {
+    display: none;
   }
 
   .category-tabs {

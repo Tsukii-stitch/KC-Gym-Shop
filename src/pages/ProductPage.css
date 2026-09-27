@@ -7,6 +7,45 @@
   padding: 48px 8% 100px;
   animation: pageEnterProduct 0.35s ease;
   position: relative;
+  overflow: hidden;
+}
+
+.product-page::before,
+.product-page::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(200px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.product-page::before {
+  width: 500px;
+  height: 500px;
+  background: var(--color-rust);
+  opacity: 0.16;
+  top: -100px;
+  left: -150px;
+}
+
+.product-page::after {
+  width: 450px;
+  height: 450px;
+  background: var(--color-safety);
+  opacity: 0.1;
+  bottom: -100px;
+  right: -150px;
+}
+
+.product-page {
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.015) 0px,
+    rgba(255, 255, 255, 0.015) 1px,
+    transparent 1px,
+    transparent 26px
+  );
 }
 
 @keyframes pageEnterProduct {
@@ -33,6 +72,11 @@
     opacity: 0;
     transform: translateX(40px);
   }
+}
+
+.product-content {
+  position: relative;
+  z-index: 1;
 }
 
 .product-content.blurred {
@@ -116,8 +160,25 @@
   align-items: flex-start;
 }
 
-.product-frame {
+.product-frame-wrap {
   width: 45%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.product-frame-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border-radius: calc(var(--radius-lg) + 18px);
+  border: 2px dashed var(--color-border);
+  z-index: 0;
+}
+
+.product-frame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 3px solid var(--color-bg-soft);
@@ -126,6 +187,7 @@
 
 .product-frame img {
   width: 100%;
+  height: auto;
   display: block;
   object-fit: cover;
 }
@@ -137,8 +199,12 @@
 .product-info h1 {
   font-family: var(--font-display);
   font-size: 44px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   color: var(--color-paper);
+}
+
+.product-info .stock-badge {
+  margin-bottom: 24px;
 }
 
 .product-description {
@@ -190,12 +256,18 @@
   color: var(--color-steel);
 }
 
+.product-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
 @media (max-width: 900px) {
   .product-main {
     flex-direction: column;
   }
 
-  .product-frame,
+  .product-frame-wrap,
   .product-info {
     width: 100%;
   }

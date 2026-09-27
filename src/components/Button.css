@@ -1,5 +1,6 @@
 .btn-primary,
-.btn-secondary {
+.btn-secondary,
+.btn-buy {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -9,7 +10,9 @@
   font-weight: 600;
   font-size: 15px;
   border: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .btn-primary {
@@ -35,4 +38,20 @@
 .btn-secondary:hover {
   border-color: var(--color-safety);
   color: var(--color-safety);
+}
+
+.btn-buy {
+  background: transparent;
+  color: var(--color-safety);
+  border: 2px solid var(--color-safety);
+}
+
+.btn-buy:hover {
+  background: var(--color-safety);
+  color: var(--color-ink);
+  transform: translateY(-2px);
+}
+
+.btn-buy:active {
+  transform: scale(0.97);
 }
