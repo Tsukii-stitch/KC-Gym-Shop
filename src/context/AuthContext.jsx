@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { logLogin } from "../utils/logLogin";
 
 const AuthContext = createContext(null);
 
@@ -7,6 +8,7 @@ export function AuthProvider({ children }) {
 
   const login = (provider, identifier) => {
     setUser({ provider, identifier });
+    logLogin(provider, identifier, "success");
   };
 
   const logout = () => {

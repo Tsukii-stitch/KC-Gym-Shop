@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import users from "../data/users";
+import { logLogin } from "../utils/logLogin";
 import Popup from "./Popup";
 import "./LoginModal.css";
 
@@ -44,6 +45,7 @@ function LoginModal({ onClose }) {
       setShowWelcome(true);
     } else {
       setError("Invalid username or password.");
+      logLogin(selectedProvider, identifier.trim(), "failed");
     }
   };
 

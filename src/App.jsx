@@ -6,6 +6,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import Equipment from "./pages/Equipment";
 import ProductPage from "./pages/ProductPage";
+import LoginLogs from "./pages/LoginLogs";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/equipment" element={<Equipment />} />
           <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/admin/logins" element={<LoginLogs />} />
         </Routes>
         <Footer />
       </BrowserRouter>
